@@ -1,9 +1,15 @@
 
+
 function getCocktail() {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
       .then(response => response.json())
         .then(data =>  displayRandomCocktail(data))
   }
+function getTopTwenty() {
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/popular.php')
+    .then(response => response.json())
+      .then(data => console.log(data))
+}
   const randomBtn = document.querySelector('#randomBtn')
   randomBtn.addEventListener('click', () =>{
     getCocktail();
