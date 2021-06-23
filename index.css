@@ -2,7 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: smaller;
 }
+
+#top-bar img{
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 1em;
+    
+}
+
+
 
 #drink-section img {
 border: 1px solid #ddd;
