@@ -3,14 +3,16 @@
   getPopularCocktails()
 })
 function getPopularCocktails() {
-   fetch("")
+   fetch("http://localhost:3000/drinks")
    .then(resp => resp.json())
+   //.then(console.log)
    .then(cocktailData => renderCocktailTop(cocktailData))
 }
 const renderCocktailTop = (drinkData) => {
   //const div = document.querySelector('#top-bar')
   const list = document.querySelector('#pop-list')
-   drinkData.drinks.forEach(drink=>{
+  //when live server is enabled = drinkData.drinks.forEach(drink=>{ 
+   drinkData.forEach(drink=>{
      //Build drink names and image for top bar
      const popularNameItem = document.createElement('h3')
      popularNameItem.innerText = drink.strDrink  
