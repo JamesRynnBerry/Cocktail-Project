@@ -1,43 +1,54 @@
-
-
+ //On page load lets grab the 20 popular cocktails and put them up top
+ document.addEventListener('DOMContentLoaded', ()=>{
+  getPopularCocktails()
+})
+function getPopularCocktails() {
+   fetch("")
+   .then(resp => resp.json())
+   .then(cocktailData => renderCocktailTop(cocktailData))
+}
+const renderCocktailTop = (drinkData) => {
+  //const div = document.querySelector('#top-bar')
+  const list = document.querySelector('#pop-list')
+   drinkData.drinks.forEach(drink=>{
+     //Build drink names and image for top bar
+     const popularNameItem = document.createElement('h3')
+     popularNameItem.innerText = drink.strDrink  
+     const popularImageItgitem = document.createElement('img')
+     popularImageItem.src = drink.strDrinkThumb
+     list.append(popularNameItem, popularImageItem)
+   })
+}
+//BELOW IS ALL FOR RANDOM COCKTAIL BUTTON GENERATOR
 function getCocktail() {
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-      .then(response => response.json())
-        .then(data =>  displayRandomCocktail(data))
-  }
-function getTopTwenty() {
-  fetch('https://www.thecocktaildb.com/api/json/v1/1/popular.php')
-    .then(response => response.json())
-      .then(data => console.log(data))
-}
-  const randomBtn = document.querySelector('#randomBtn')
-  randomBtn.addEventListener('click', () =>{
-    getCocktail();
-  })
-  function displayRandomCocktail(cocktail) {
-    console.log(cocktail.drinks[0].strDrink);
-    let drinkSection = document.querySelector("#drink-section");
-    let drinkName = document.createElement("h2");
-    drinkName.innerHTML = cocktail.drinks[0].strDrink;
-    drinkSection.appendChild(drinkName);
-    let img = document.createElement("img");
-    img.src = cocktail.drinks[0].strDrinkThumb;
-    drinkSection.appendChild(img);
-  //use forEach instead
-    /* for (let i = 1; i < 16; i++) {
-      console.log(i);
-      let ingredient = document.createElement("li");
-      ingredient.innerHTML = cocktail.drinks[0][`strIngredient${i}`];
-      drinkSection.appendChild(ingredient);
-    } */
-  }
- /* 
-  function getPopularCocktails() {
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-    .then(resp => resp.json())
-    .then(cocktailData => renderCocktailMidPage(cocktailData))
-}
- const renderCocktailMidPage = (cocktailData) => {
-    console.log(cocktailData)
+   fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+     .then(response => response.json())
+       .then(data =>  displayRandomCocktail(data))
  }
-  */
+ const randomBtn = document.querySelector('#randomBtn')
+ randomBtn.addEventListener('click', () =>{
+   getCocktail();
+ })
+ function displayRandomCocktail(cocktail) {
+  // console.log(cocktail.drinks[0].strDrink);
+   let drinkSection = document.querySelector("#drink-section");
+   drinkSection.innerHTML = "";
+   let drinkName = document.createElement("h2");
+   drinkName.innerHTML = cocktail.drinks[0].strDrink;
+   drinkSection.appendChild(drinkName);
+   let img = document.createElement("img");
+   img.src = cocktail.drinks[0].strDrinkThumb;
+   drinkSection.appendChild(img);
+ //use forEach instead
+/*   cocktail.drinks.forEach(ingredients => {
+   let ingredientList = document.createElement('li')
+   ingredients.innertext = ingredients.strIngredient`${counter}`
+   drinkSection.append(ingredientList)
+ }) */
+    for (let i = 1; i < 16; i++) {
+     console.log(i);
+     let ingredient = document.createElement("li");
+     ingredient.innerHTML = cocktail.drinks[0][`strIngredient${i}`];
+     drinkSection.appendChild(ingredient);
+   } 
+ }
