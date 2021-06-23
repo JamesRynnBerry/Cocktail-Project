@@ -14,7 +14,7 @@ const renderCocktailTop = (drinkData) => {
      //Build drink names and image for top bar
      const popularNameItem = document.createElement('h3')
      popularNameItem.innerText = drink.strDrink  
-     const popularImageItgitem = document.createElement('img')
+     const popularImageItem = document.createElement('img')
      popularImageItem.src = drink.strDrinkThumb
      list.append(popularNameItem, popularImageItem)
    })
