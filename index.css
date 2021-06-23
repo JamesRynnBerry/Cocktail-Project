@@ -1,16 +1,19 @@
-/* body{
-    display:grid;
-}
-
-#filter-div {
+#top-bar div {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: skyblue;
-  
+}
+
+#drink-section img {
+border: 1px solid #ddd;
+margin-left: center;
+margin-right: center;
+  border-radius: 4px;
+  padding: 5px;
+  width: 300px;
+  height: 300px
   }
-  
-} */
+
 ul {
     list-style: none;
   }
