@@ -9,17 +9,43 @@ function getPopularCocktails() {
    .then(cocktailData => renderCocktailTop(cocktailData))
 }
 const renderCocktailTop = (drinkData) => {
-  //const div = document.querySelector('#top-bar')
+  //console.log(drinkData)
+  const div = document.querySelector('#top-bar')
   const list = document.querySelector('#pop-list')
-  //when live server is enabled = drinkData.drinks.forEach(drink=>{ 
-   drinkData.forEach(drink=>{
+  //when live server is enabled => drinkData.drinks.forEach(drink=>{ 
+    drinkData.forEach(drink=>{
      //Build drink names and image for top bar
      const popularNameItem = document.createElement('h3')
      popularNameItem.innerText = drink.strDrink  
      const popularImageItem = document.createElement('img')
      popularImageItem.src = drink.strDrinkThumb
+     //append items 
      list.append(popularNameItem, popularImageItem)
    })
+
+   //EVENT LISTENER FOR TOP NAV BAR TO RENDER DRINK INGREDIENTS
+   div.addEventListener('click', ()=>{
+    //this function should fire when a click occurs anywhere in top-bar div
+    renderDrinkSection()
+   })
+
+   
+   //Render Drinks With Name/Image/Ingredients/Like/Comment in the mid div section
+   const renderDrinkSection = () =>{
+     const renderDiv = document.querySelector('#render-mid-section')
+    //drinkData.forEach(drink=>{
+      const renderMidName = document.createElement('h4')
+      renderMidName.innerText = drinkData.strDrink  
+      const renderMidImage = document.createElement('img')
+      renderMidImage.src = drinkData.strDrinkThumb
+      const likeButton = document.createElement('button')
+      likeButton.innerHTML = "Like"
+
+      //append items 
+      renderDiv.append(renderMidName, renderMidImage, likeButton)
+    //})
+   }
+
 }
 //BELOW IS ALL FOR RANDOM COCKTAIL BUTTON GENERATOR
 function getCocktail() {
