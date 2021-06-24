@@ -23,9 +23,9 @@ const renderCocktailTop = (drinkData) => {
      popularNameItem.innerText = drink.strDrink  
      const popularImageItem = document.createElement('img')
      popularImageItem.src = drink.strDrinkThumb
+     const popularList = document.querySelector("li")
      
-
-     //append items 
+    //  append items 
     drinkDiv.append(popularNameItem, popularImageItem)
     list.append(drinkDiv)
     drinkDiv.addEventListener('click', ()=>{
