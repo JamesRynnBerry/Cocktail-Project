@@ -1,0 +1,22 @@
+{
+  "name": "cocktail-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesRynnBerry/Cocktail-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesRynnBerry/Cocktail-Project/issues"
+  },
+  "homepage": "https://github.com/JamesRynnBerry/Cocktail-Project#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}

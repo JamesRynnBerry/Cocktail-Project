@@ -1,3 +1,5 @@
+// require('dotenv').config({path: __dirname + '/.env'})
+// const key = process.env.API_KEY
  //On page load lets grab the 20 popular cocktails and put them up top
  document.addEventListener('DOMContentLoaded', ()=>{
   getPopularCocktails()
@@ -10,30 +12,39 @@ function getPopularCocktails() {
 }
 const renderCocktailTop = (drinkData) => {
   //console.log(drinkData)
-  const div = document.querySelector('#top-bar')
+  //const div = document.querySelector('#top-bar')
   const list = document.querySelector('#pop-list')
   //when live server is enabled => drinkData.drinks.forEach(drink=>{ 
     drinkData.forEach(drink=>{
      //Build drink names and image for top bar
+     const drinkDiv = document.createElement('div')
+     drinkDiv.className = "drink"
      const popularNameItem = document.createElement('h3')
      popularNameItem.innerText = drink.strDrink  
      const popularImageItem = document.createElement('img')
      popularImageItem.src = drink.strDrinkThumb
+     
+
      //append items 
-     list.append(popularNameItem, popularImageItem)
+    drinkDiv.append(popularNameItem, popularImageItem)
+    list.append(drinkDiv)
+    drinkDiv.addEventListener('click', ()=>{
+      renderDrinkSection(drink)
+    })
    })
 
-   //EVENT LISTENER FOR TOP NAV BAR TO RENDER DRINK INGREDIENTS
-   div.addEventListener('click', ()=>{
-    //this function should fire when a click occurs anywhere in top-bar div
-    renderDrinkSection()
-   })
+  //  EVENT LISTENER FOR TOP NAV BAR TO RENDER DRINK INGREDIENTS
+  // div.addEventListener('click', ()=>{
+  //   this function should fire when a click occurs anywhere in top-bar div
+  //  renderDrinkSection()
+  // })
 
    
    //Render Drinks With Name/Image/Ingredients/Like/Comment in the mid div section
-   const renderDrinkSection = () =>{
+   const renderDrinkSection = (drinkData) =>{
      const renderDiv = document.querySelector('#render-mid-section')
     //drinkData.forEach(drink=>{
+      renderDiv.innerHTML = ""
       const renderMidName = document.createElement('h4')
       renderMidName.innerText = drinkData.strDrink  
       const renderMidImage = document.createElement('img')
