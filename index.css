@@ -1,16 +1,21 @@
-#top-bar-div {
+#top-bar-div ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+#pop-list-div {
     font-size: smaller;
+    display:inline-block;
 }
 
 #top-bar img{
     width: 100px;
     height: 100px;
-    float: left;
-    margin: 1em;
-    
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 

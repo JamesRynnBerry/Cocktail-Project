@@ -9,12 +9,13 @@ function getPopularCocktails() {
    .then(cocktailData => renderCocktailTop(cocktailData))
 }
 const renderCocktailTop = (drinkData) => {
-  //const div = document.querySelector('#top-bar')
+  const div = document.querySelector('#top-bar')
   const list = document.querySelector('#pop-list')
   //when live server is enabled = drinkData.drinks.forEach(drink=>{ 
+    
    drinkData.forEach(drink=>{
      //Build drink names and image for top bar
-     const popularNameItem = document.createElement('h3')
+     const popularNameItem = document.createElement('p')
      popularNameItem.innerText = drink.strDrink  
      const popularImageItem = document.createElement('img')
      popularImageItem.src = drink.strDrinkThumb
