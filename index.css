@@ -1,17 +1,10 @@
-#top-bar-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: smaller;
-}
-
-#top-bar img{
+/* #top-bar img{
     width: 100px;
     height: 100px;
     float: left;
     margin: 1em;
     
-}
+} 
 
 #drink-section img {
 border: 1px solid #ddd;
@@ -21,8 +14,47 @@ margin-right: auto;
   padding: 5px;
   width: 300px;
   height: 300px
-  }
+  } */
 
 #drink-section li {
     list-style: none;
   }
+
+  #header{
+    text-align: center;
+  }
+
+  .miniImage{
+    width: 200px;
+    height: auto;
+  }
+
+  li{
+    width 200px;
+    height: auto;
+  }
+
+/* #top-bar-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: smaller;
+}
+
+#top-bar img{
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 1em;
+  
+}
+
+#drink-section img {
+border: 1px solid #ddd;
+margin-left: auto;
+margin-right: auto;
+border-radius: 4px;
+padding: 5px;
+width: 300px;
+height: 300px
+} */

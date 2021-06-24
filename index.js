@@ -1,7 +1,5 @@
-// require('dotenv').config({path: __dirname + '/.env'})
-// const key = process.env.API_KEY
- //On page load lets grab the 20 popular cocktails and put them up top
- document.addEventListener('DOMContentLoaded', ()=>{
+const topTwentyBtn = document.querySelector('#popularBtn')
+topTwentyBtn.addEventListener('click', ()=>{
   getPopularCocktails()
 })
 function getPopularCocktails() {
@@ -11,12 +9,13 @@ function getPopularCocktails() {
    .then(cocktailData => renderCocktailTop(cocktailData))
 }
 const renderCocktailTop = (drinkData) => {
-  //console.log(drinkData)
-  //const div = document.querySelector('#top-bar')
+  console.log(drinkData)
+
   const list = document.querySelector('#pop-list')
+  list.innerHTML=""
   //when live server is enabled => drinkData.drinks.forEach(drink=>{ 
     drinkData.forEach(drink=>{
-     //Build drink names and image for top bar
+
      const drinkDiv = document.createElement('div')
      drinkDiv.className = "drink"
      const popularNameItem = document.createElement('h3')
@@ -24,7 +23,6 @@ const renderCocktailTop = (drinkData) => {
      const popularImageItem = document.createElement('img')
      popularImageItem.src = drink.strDrinkThumb
      
-
      //append items 
     drinkDiv.append(popularNameItem, popularImageItem)
     list.append(drinkDiv)
@@ -32,15 +30,8 @@ const renderCocktailTop = (drinkData) => {
       renderDrinkSection(drink)
     })
    })
-
-  //  EVENT LISTENER FOR TOP NAV BAR TO RENDER DRINK INGREDIENTS
-  // div.addEventListener('click', ()=>{
-  //   this function should fire when a click occurs anywhere in top-bar div
-  //  renderDrinkSection()
-  // })
-
    
-   //Render Drinks With Name/Image/Ingredients/Like/Comment in the mid div section
+   //Render Drinks With Name/Image/Ingredients/Like in the mid div section
    const renderDrinkSection = (drinkData) =>{
      const renderDiv = document.querySelector('#render-mid-section')
     //drinkData.forEach(drink=>{
@@ -51,10 +42,17 @@ const renderCocktailTop = (drinkData) => {
       renderMidImage.src = drinkData.strDrinkThumb
       const likeButton = document.createElement('button')
       likeButton.innerHTML = "Like"
+      likeButton.addEventListener('click', (e)=>{
+        if(e.target.innerHTML === "Like"){
+          e.target.innerHTML = "Unlike"
+       }
+       else{
+         e.target.innerHTML = "Like"
+       }
+      })
 
       //append items 
       renderDiv.append(renderMidName, renderMidImage, likeButton)
-    //})
    }
 
 }
@@ -70,6 +68,7 @@ function getCocktail() {
  })
  function displayRandomCocktail(cocktail) {
   // console.log(cocktail.drinks[0].strDrink);
+  console.log(cocktail)
    let drinkSection = document.querySelector("#drink-section");
    drinkSection.innerHTML = "";
    let drinkName = document.createElement("h2");
@@ -78,16 +77,29 @@ function getCocktail() {
    let img = document.createElement("img");
    img.src = cocktail.drinks[0].strDrinkThumb;
    drinkSection.appendChild(img);
- //use forEach instead
-/*   cocktail.drinks.forEach(ingredients => {
-   let ingredientList = document.createElement('li')
-   ingredients.innertext = ingredients.strIngredient`${counter}`
-   drinkSection.append(ingredientList)
- }) */
+   const liker = document.createElement('button')
+   liker.innerHTML = "Add to Cabinet?"
+   
     for (let i = 1; i < 16; i++) {
-     console.log(i);
+     //console.log(i);
      let ingredient = document.createElement("li");
      ingredient.innerHTML = cocktail.drinks[0][`strIngredient${i}`];
      drinkSection.appendChild(ingredient);
    } 
+   drinkSection.appendChild(liker)
+   liker.addEventListener('click', ()=>{
+      drinkSection.innerHTML=""
+      const cabinet = document.querySelector('#cabTable')
+      const row = cabinet.insertRow(0);
+      let cellImage = row.insertCell(0);
+      let cellName = row.insertCell(1);
+      const imgTable = document.createElement('img')
+      imgTable.className = "miniImage"
+      imgTable.src = cocktail.drinks[0].strDrinkThumb
+
+      const nameTable = document.createElement('h2')
+      cellName.innerHTML = cocktail.drinks[0].strDrink;
+
+    cellImage.append(imgTable, nameTable)
+   })
  }
