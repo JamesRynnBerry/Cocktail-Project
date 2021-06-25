@@ -79,7 +79,7 @@ function getCocktail() {
    img.src = cocktail.drinks[0].strDrinkThumb;
    drinkSection.appendChild(img);
    const liker = document.createElement('button')
-   liker.innerHTML = "Add to Cabinet?"
+   liker.innerHTML = "Add to Cabinet!"
    
     for (let i = 1; i < 16; i++) {
      //console.log(i);
